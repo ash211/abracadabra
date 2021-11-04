@@ -196,9 +196,19 @@ export async function activate(context: vscode.ExtensionContext) {
     return;
   }
 
-  api.configurePlugin("@abracadabra/ts-server-plugin", {
-    someValue: "hello! 🤠"
-  });
+  console.log("API >>", Object.keys(api));
+
+  // The API we got: https://github.com/microsoft/vscode/blob/af399183618bed57f962dc9833c89b1cf544c533/extensions/typescript-language-features/src/api.ts#L9-L18
+  setInterval(() => {
+    api.configurePlugin("@abracadabra/ts-server-plugin", {
+      someValue: "hello! 🤠",
+      someFunction: {
+        test: (name: string) => {
+          return name + " hey!";
+        }
+      }
+    });
+  }, 3000);
 }
 
 export function deactivate() {}

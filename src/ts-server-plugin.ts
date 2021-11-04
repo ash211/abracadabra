@@ -1,11 +1,16 @@
 import * as ts_module from "typescript/lib/tsserverlibrary";
 
 export = function init({}: { typescript: typeof ts_module }) {
+  let logger: any;
   return {
     create(info: ts.server.PluginCreateInfo) {
+      logger = info.project.projectService.logger;
       info.project.projectService.logger.info(
         "[abracadabra] Hello from Abracadabra ts-server-plugin 👋"
       );
+
+      // typescript.
+      // info.
 
       // Set up decorator object
       const proxy: ts.LanguageService = Object.create(null);
@@ -41,8 +46,17 @@ export = function init({}: { typescript: typeof ts_module }) {
 
       return proxy;
     },
-    onConfigurationChanged(_config: any) {
+    onConfigurationChanged(config: any) {
       // Receive configuration changes sent from VS Code
+      if (logger) {
+        logger.info(`[abracadabra] Received config!`);
+        logger.info(`[abracadabra] ${config.someValue}`);
+        logger.info(
+          `[abracadabra] ${typeof config.someFunction} => ${config.someFunction(
+            "hello"
+          )}`
+        );
+      }
     }
   };
 };
