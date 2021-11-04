@@ -85,7 +85,9 @@
     "webpack": "5.61.0",
     "webpack-cli": "4.9.1"
   },
+  "TODO:": "compile a valid @abracadabra/ts-server-plugin on build",
   "dependencies": {
+    "@abracadabra/ts-server-plugin": "file:./out/ts-server-plugin",
     "@babel/parser": "7.15.7",
     "@babel/traverse": "7.16.0",
     "@babel/types": "7.16.0",
@@ -1195,6 +1197,12 @@
           "when": "editorLangId == vue"
         }
       ]
-    }
+    },
+    "typescriptServerPlugins": [
+      {
+        "name": "@abracadabra/ts-server-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ]
   }
 }

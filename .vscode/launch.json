@@ -28,7 +28,12 @@
         "${workspaceFolder}/src/playground"
       ],
       "outFiles": ["${workspaceFolder}/out/**/*.js"],
-      "preLaunchTask": "npm: build"
+      "preLaunchTask": "npm: build",
+      "problemMatcher": "$tsc",
+      "env": {
+        "TSS_DEBUG": "9229",
+        "TSS_LOG": "-logToFile true -file /Users/nicolas/Development/nicoespeon/abracadabra/gitignore/ts-server-plugin-logs.txt -level verbose"
+      }
     }
   ]
 }

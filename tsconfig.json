@@ -19,11 +19,19 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
+  "include": ["src/*", "out/ts-server-plugin.js"],
   "exclude": [
     "node_modules",
     "out",
     ".vscode-test",
     "gitignore",
     "src/playground"
+  ],
+  // uncomment the below when debugging the typescript styled plugin
+  "plugins": [
+    {
+      // TODO: distinct the debug tsconfig from the prod one (extend)
+      "name": "./node_modules/@abracadabra/ts-server-plugin"
+    }
   ]
 }
